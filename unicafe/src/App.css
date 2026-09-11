@@ -1,0 +1,152 @@
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .page {
+    width: 100vw;
+    height: 100vh;
+    /* background: #F1F5EA; */
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 420px;
+    background: #FBFAF4;
+    border-radius: 28px;
+    border: 1px solid #DCE6CC;
+    padding: 32px;
+    box-sizing: border-box;
+  }
+
+  .title {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 400;
+    font-size: 28px;
+    color: #233B1D;
+    margin: 0 0 24px;
+  }
+
+  .button-row {
+    display: flex;
+    gap: 10px;
+  }
+
+  .button {
+    flex: 1;
+    padding: 14px 8px;
+    border-radius: 16px;
+    border: 1.5px solid transparent;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .button:hover {
+    transform: translateY(-5px);
+    transition: 0.3s;
+  }
+
+  .button.good {
+    background: #E4EEDA;
+    border-color: #3F6B3340;
+    color: #3F6B33;
+  }
+
+  .button.neutral {
+    background: #EEEADA;
+    border-color: #7C7A4A40;
+    color: #7C7A4A;
+  }
+
+  .button.bad {
+    background: #F0E3D8;
+    border-color: #8C5A3C40;
+    color: #8C5A3C;
+  }
+
+  .divider {
+    height: 1px;
+    background: #E1E7D4;
+    margin: 28px 0 20px;
+  }
+
+  .stat-title {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    color: #233B1D;
+    margin: 0 0 16px;
+  }
+
+  .stat-row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    color: #5B6650;
+  }
+
+  .stat-count {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .stat-count.good {
+    color: #3F6B33;
+  }
+
+  .stat-count.neutral {
+    color: #7C7A4A;
+  }
+
+  .stat-count.bad {
+    color: #8C5A3C;
+  }
+
+  .detailedStat-block {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+  }
+
+  .detailedStat-block>* {
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .allStat {
+    background: #dadbee;
+    border-color: #3F6B3340;
+    color: #33366b;
+  }
+
+  .averageStat {
+    background: #ecdaee;
+    border-color: #3F6B3340;
+    color: #63336b;
+  }
+
+  .positiveStat {
+    background: #daeedc;
+    border-color: #3F6B3340;
+    color: #3f6b33;
+  }
