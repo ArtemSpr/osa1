@@ -2,6 +2,43 @@ import "./App.css";
 
 import { useState } from "react";
 
+const Statistic = (props) => {
+  return (
+    <>
+      <p className="stat-title">Statistic</p>
+
+      <div className="stat-row">
+        <div className="stat-item">
+          <span className="stat-label">Good</span>
+          <span className="stat-count good">{props.good}</span>
+        </div>
+        <div className="stat-item">
+          <span className="stat-label">Neutral</span>
+          <span className="stat-count neutral">{props.neutral}</span>
+        </div>
+        <div className="stat-item">
+          <span className="stat-label">Bad</span>
+          <span className="stat-count bad">{props.bad}</span>
+        </div>
+      </div>
+
+      <div className="divider"></div>
+      <p className="stat-title">Detailed statistic</p>
+
+      <div className="detailedStat-block">
+        <span className="allStat">All: {props.all}</span>
+        <span className="averageStat">
+          Average: {props.all != 0 ? props.average.toFixed(2) : "No data"}
+        </span>
+        <span className="positiveStat">
+          Positive:{" "}
+          {props.all != 0 ? props.positive.toFixed(1) + "%" : "No data"}
+        </span>
+      </div>
+    </>
+  );
+};
+
 const App = () => {
   const [good, setGood] = useState(0);
   const [neutral, setNeutral] = useState(0);
@@ -33,39 +70,14 @@ const App = () => {
 
         <div className="divider"></div>
 
-        <p className="stat-title">Statistic</p>
-
-        <div className="stat-row">
-          <div className="stat-item">
-            <span className="stat-label">Good</span>
-            <span className="stat-count good">{good}</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-label">Neutral</span>
-            <span className="stat-count neutral">{neutral}</span>
-          </div>
-          <div className="stat-item">
-            <span className="stat-label">Bad</span>
-            <span className="stat-count bad">{bad}</span>
-          </div>
-        </div>
-
-        <div className="divider"></div>
-        <p className="stat-title">Detailed statistic</p>
-
-        <div className="detailedStat-block">
-          <span className="allStat">All: {all}</span>
-          <span className="averageStat">
-            Average: {all != 0 ? average.toFixed(2) : "No data"}
-          </span>
-          <span className="positiveStat">
-            Positive:{" "}
-            {all != 0
-              ? positive.toFixed(1)
-              : "There's no positive in this world"}
-            %
-          </span>
-        </div>
+        <Statistic
+          good={good}
+          neutral={neutral}
+          bad={bad}
+          all={all}
+          average={average}
+          positive={positive}
+        ></Statistic>
       </div>
     </div>
   );

@@ -18,7 +18,7 @@
 
   .card {
     width: 100%;
-    max-width: 420px;
+    max-width: 450px;
     background: #FBFAF4;
     border-radius: 28px;
     border: 1px solid #DCE6CC;
@@ -126,11 +126,13 @@
     display: flex;
     gap: 10px;
     justify-content: space-between;
+
   }
 
   .detailedStat-block>* {
     padding: 10px;
     border-radius: 10px;
+
   }
 
   .allStat {
