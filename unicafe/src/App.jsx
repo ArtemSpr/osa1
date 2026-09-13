@@ -5,6 +5,7 @@ import { useState } from "react";
 const Statistic = (props) => {
   return (
     <>
+      <div className="divider"></div>
       <p className="stat-title">Statistic</p>
 
       <div className="stat-row">
@@ -68,16 +69,18 @@ const App = () => {
           </div>
         </div>
 
-        <div className="divider"></div>
-
-        <Statistic
-          good={good}
-          neutral={neutral}
-          bad={bad}
-          all={all}
-          average={average}
-          positive={positive}
-        ></Statistic>
+        {all !== 0 ? (
+          <Statistic
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            all={all}
+            average={average}
+            positive={positive}
+          ></Statistic>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
