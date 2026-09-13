@@ -2,6 +2,54 @@ import "./App.css";
 
 import { useState } from "react";
 
+const Button = (props) => {
+  return props.title === "Good" ? (
+    <div
+      className="button good"
+      onClick={() => props.setFunc(props.buttonTitle + 1)}
+    >
+      {props.title}
+    </div>
+  ) : props.title === "Neutral" ? (
+    <div
+      className="button neutral"
+      onClick={() => props.setFunc(props.buttonTitle + 1)}
+    >
+      {props.title}
+    </div>
+  ) : props.title === "Bad" ? (
+    <div
+      className="button bad"
+      onClick={() => props.setFunc(props.buttonTitle + 1)}
+    >
+      {props.title}
+    </div>
+  ) : (
+    "Unknown"
+  );
+};
+
+const StatisticLine = (props) => {
+  return props.text === "Good" ? (
+    <div className="stat-item">
+      <span className="stat-label">{props.text}</span>
+      <span className="stat-count good">{props.value}</span>
+    </div>
+  ) : props.text === "Neutral" ? (
+    <div className="stat-item">
+      <span className="stat-label">{props.text}</span>
+      <span className="stat-count neutral">{props.value}</span>
+    </div>
+  ) : props.text === "Bad" ? (
+    <div className="stat-item">
+      <span className="stat-label">{props.text}</span>
+      <span className="stat-count bad">{props.value}</span>
+    </div>
+  ) : (
+    "Unknown"
+  );
+};
+
 const Statistic = (props) => {
   return (
     <>
@@ -9,18 +57,9 @@ const Statistic = (props) => {
       <p className="stat-title">Statistic</p>
 
       <div className="stat-row">
-        <div className="stat-item">
-          <span className="stat-label">Good</span>
-          <span className="stat-count good">{props.good}</span>
-        </div>
-        <div className="stat-item">
-          <span className="stat-label">Neutral</span>
-          <span className="stat-count neutral">{props.neutral}</span>
-        </div>
-        <div className="stat-item">
-          <span className="stat-label">Bad</span>
-          <span className="stat-count bad">{props.bad}</span>
-        </div>
+        <StatisticLine text="Good" value={props.good}></StatisticLine>
+        <StatisticLine text="Neutral" value={props.neutral}></StatisticLine>
+        <StatisticLine text="Bad" value={props.bad}></StatisticLine>
       </div>
 
       <div className="divider"></div>
@@ -55,18 +94,16 @@ const App = () => {
         <p className="title">Give feedback</p>
 
         <div className="button-row">
-          <div className="button good" onClick={() => setGood(good + 1)}>
+          {/* <div className="button good" onClick={() => setGood(good + 1)}>
             Good
-          </div>
-          <div
-            className="button neutral"
-            onClick={() => setNeutral(neutral + 1)}
-          >
-            Neutral
-          </div>
-          <div className="button bad" onClick={() => setBad(bad + 1)}>
-            Bad
-          </div>
+          </div> */}
+          <Button buttonTitle={good} setFunc={setGood} title="Good"></Button>
+          <Button
+            buttonTitle={neutral}
+            setFunc={setNeutral}
+            title="Neutral"
+          ></Button>
+          <Button buttonTitle={bad} setFunc={setBad} title="Bad"></Button>
         </div>
 
         {all !== 0 ? (
