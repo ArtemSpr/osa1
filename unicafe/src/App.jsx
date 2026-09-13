@@ -31,20 +31,20 @@ const Button = (props) => {
 
 const StatisticLine = (props) => {
   return props.text === "Good" ? (
-    <div className="stat-item">
-      <span className="stat-label">{props.text}</span>
-      <span className="stat-count good">{props.value}</span>
-    </div>
+    <tr className="stat-item">
+      <td className="stat-label">{props.text}</td>
+      <td className="stat-count good">{props.value}</td>
+    </tr>
   ) : props.text === "Neutral" ? (
-    <div className="stat-item">
-      <span className="stat-label">{props.text}</span>
-      <span className="stat-count neutral">{props.value}</span>
-    </div>
+    <tr className="stat-item">
+      <td className="stat-label">{props.text}</td>
+      <td className="stat-count neutral">{props.value}</td>
+    </tr>
   ) : props.text === "Bad" ? (
-    <div className="stat-item">
-      <span className="stat-label">{props.text}</span>
-      <span className="stat-count bad">{props.value}</span>
-    </div>
+    <tr className="stat-item">
+      <td className="stat-label">{props.text}</td>
+      <td className="stat-count bad">{props.value}</td>
+    </tr>
   ) : (
     "Unknown"
   );
@@ -54,27 +54,44 @@ const Statistic = (props) => {
   return (
     <>
       <div className="divider"></div>
-      <p className="stat-title">Statistic</p>
+      <table>
+        <thead>
+          <tr>
+            <td>Statistics</td>
+          </tr>
+        </thead>
+        <tbody>
+          <StatisticLine text="Good" value={props.good} className="good" />
+          <StatisticLine
+            text="Neutral"
+            value={props.neutral}
+            className="neutral"
+          />
+          <StatisticLine text="Bad" value={props.bad} className="bad" />
+        </tbody>
 
-      <div className="stat-row">
-        <StatisticLine text="Good" value={props.good}></StatisticLine>
-        <StatisticLine text="Neutral" value={props.neutral}></StatisticLine>
-        <StatisticLine text="Bad" value={props.bad}></StatisticLine>
-      </div>
-
-      <div className="divider"></div>
-      <p className="stat-title">Detailed statistic</p>
-
-      <div className="detailedStat-block">
-        <span className="allStat">All: {props.all}</span>
-        <span className="averageStat">
-          Average: {props.all != 0 ? props.average.toFixed(2) : "No data"}
-        </span>
-        <span className="positiveStat">
-          Positive:{" "}
-          {props.all != 0 ? props.positive.toFixed(1) + "%" : "No data"}
-        </span>
-      </div>
+        <thead>
+          <tr>
+            <td colSpan="2">Detailed Statistics</td>
+          </tr>
+        </thead>
+        <tbody className="detailedStat-block">
+          <tr className="allStat">
+            <td>All</td>
+            <td>{props.all}</td>
+          </tr>
+          <tr className="averageStat">
+            <td>Average</td>
+            <td>{props.all !== 0 ? props.average.toFixed(2) : "No data"}</td>
+          </tr>
+          <tr className="positiveStat">
+            <td>Positive</td>
+            <td>
+              {props.all !== 0 ? props.positive.toFixed(1) + "%" : "No data"}
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </>
   );
 };
