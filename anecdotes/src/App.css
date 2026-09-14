@@ -1,0 +1,74 @@
+:root {
+  --blue-100: #E3F2FD;
+  --blue-300: #90CAF9;
+  --blue-500: #2196F3;
+  --blue-900: #0D47A1;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--blue-100);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  max-width: 420px;
+  padding: 36px 28px;
+  background: #FFFFFF;
+  border: 1px solid var(--blue-300);
+  border-radius: 24px;
+  box-shadow: 0 12px 30px rgba(13, 71, 161, 0.12);
+  text-align: center;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--blue-900);
+  user-select: none;
+}
+
+.card>span:not(.title) {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #37474F;
+  padding: 16px 18px;
+  background: var(--blue-100);
+  border-radius: 14px;
+  border: 1px solid var(--blue-300);
+}
+
+.button {
+  padding: 12px 28px;
+  background: var(--blue-500);
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.2s;
+  user-select: none;
+}
+
+.button:hover {
+  background: var(--blue-900);
+  transform: translateY(-2px);
+}
+
+.button:active {
+  transform: translateY(0);
+}
