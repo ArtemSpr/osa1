@@ -3,6 +3,7 @@ import "./App.css";
 
 const App = () => {
   const [selected, setSelected] = useState(0);
+  const [votedList, setVotedList] = useState([]);
 
   const anecdotes = [
     "If it hurts, do it more often.",
@@ -23,13 +24,42 @@ const App = () => {
     setSelected(getRandomInt(anecdotes.length));
   };
 
+  const voteFunc = () => {
+    setVotedList([...votedList, selected]);
+    console.log("voted list:" + votedList);
+  };
+
+  const topAnecdoteFunc = () => {
+    const counts = votedList.reduce((acc, item) => {
+      acc[item] = (acc[item] || 0) + 1;
+      return acc;
+    }, {});
+
+    const mostFrequent =
+      Object.keys(counts).length > 0
+        ? Object.keys(counts).reduce((a, b) => (counts[a] > counts[b] ? a : b))
+        : null;
+    return <span className="topAnecdote">{anecdotes[mostFrequent]}</span>;
+  };
+
   return (
     <div>
       <div className="card">
         <span className="title">Press a button and get a new anecdote</span>
         <span>{anecdotes[selected]}</span>
-        <div className="button" onClick={() => randomAnecdote()}>
-          New one
+
+        <div className="buttons-row">
+          <div className="button" onClick={() => randomAnecdote()}>
+            New anecdote
+          </div>
+          <div className="button" onClick={() => voteFunc()}>
+            Vote
+          </div>
+        </div>
+        <div className="divider"></div>
+        <div className="topAnecdote-block">
+          <span className="title">The most popular anecdote</span>
+          {topAnecdoteFunc()}
         </div>
       </div>
     </div>
